@@ -25,9 +25,9 @@ namespace Lab05.Subscriber
         static async Task MainAsync(string subscriptionName)
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine($"Lab04 - Subscriber for '{subscriptionName}' ({Configs.PID})");
+            Console.WriteLine($"Lab05 - Subscriber for '{subscriptionName}' ({Configs.PID})");
             
-            await Bootstrap.Lab04Async(_topicName, _subscriptionName1, _subscriptionName2, _subscriptionName3);
+            await Bootstrap.Lab05Async(_topicName, _subscriptionName1, _subscriptionName2, _subscriptionName3);
             
             _subscription = new SubscriptionClient(Configs.SbConnectionString, _topicName, subscriptionName);
             
@@ -51,7 +51,7 @@ namespace Lab05.Subscriber
             Console.WriteLine($"Received message!" +
                               $"SequenceNumber: {message.SystemProperties.SequenceNumber} " +
                               $"Body: {Encoding.UTF8.GetString(message.Body)} " +
-                              $"Number: {message.UserProperties["number"]}");
+                              $"Number: {message.UserProperties["tShirt"]}");
 
             await _subscription.CompleteAsync(message.SystemProperties.LockToken);
         }

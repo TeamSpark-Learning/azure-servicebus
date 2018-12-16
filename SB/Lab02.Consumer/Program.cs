@@ -50,8 +50,8 @@ namespace Lab02.Consumer
         static async Task ProcessMessagesAsync(Message message, CancellationToken token)
         {
             Console.WriteLine($"Received message!" +
-                              $"SequenceNumber: {message.SystemProperties.SequenceNumber}" +
-                              $"DeliveryCount: {message.SystemProperties.DeliveryCount}" +
+                              $"SequenceNumber: {message.SystemProperties.SequenceNumber} " +
+                              $"DeliveryCount: {message.SystemProperties.DeliveryCount} " +
                               $"Body: {Encoding.UTF8.GetString(message.Body)}");
 
             //await Task.Delay(TimeSpan.FromSeconds(5));
