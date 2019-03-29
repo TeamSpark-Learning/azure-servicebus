@@ -29,7 +29,7 @@ namespace Lab04.Subscriber
             
             await Bootstrap.Lab04Async(_topicName, _subscriptionName1, _subscriptionName2, _subscriptionName3);
             
-            _subscription = new SubscriptionClient(Configs.SbConnectionString, _topicName, subscriptionName);
+            _subscription = new SubscriptionClient(Configs.SbFailoverConnectionString, _topicName, subscriptionName);
             
             var messageHandlerOptions = new MessageHandlerOptions(Helpers.ExceptionReceivedHandler)
             {

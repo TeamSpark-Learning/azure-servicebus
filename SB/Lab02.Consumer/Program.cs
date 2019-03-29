@@ -28,8 +28,8 @@ namespace Lab02.Consumer
 
             await Bootstrap.Lab02Async(_queueName, _queueNameDead);
             
-            _queue = new QueueClient(Configs.SbConnectionString, _queueName);
-            _queueDead = new QueueClient(Configs.SbConnectionString, _queueNameDead);
+            _queue = new QueueClient(Configs.SbFailoverConnectionString, _queueName);
+            _queueDead = new QueueClient(Configs.SbFailoverConnectionString, _queueNameDead);
             
             var messageHandlerOptions = new MessageHandlerOptions(Helpers.ExceptionReceivedHandler)
             {

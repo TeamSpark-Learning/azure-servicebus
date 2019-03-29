@@ -27,7 +27,7 @@ namespace Lab02.Producer
 
             await Bootstrap.Lab02Async(_queueName, _queueNameDead);
             
-            _queue = new QueueClient(Configs.SbConnectionString, _queueName);
+            _queue = new QueueClient(Configs.SbFailoverConnectionString, _queueName);
             
             for (var i = 0; i < _messagesToSend; i++)
             {

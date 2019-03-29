@@ -28,7 +28,7 @@ namespace Lab03.Publisher
 
             await Bootstrap.Lab03Async(_topicName, _subscriptionName1, _subscriptionName2);
             
-            _topic = new TopicClient(Configs.SbConnectionString, _topicName);
+            _topic = new TopicClient(Configs.SbFailoverConnectionString, _topicName);
             
             for (var i = 0; i < _messagesToSend; i++)
             {

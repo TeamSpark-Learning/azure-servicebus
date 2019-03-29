@@ -27,7 +27,7 @@ namespace Lab01.Producer
 
             await Bootstrap.Lab01Async(_queueName);
             
-            _queue = new QueueClient(Configs.SbConnectionString, _queueName);
+            _queue = new QueueClient(Configs.SbFailoverConnectionString, _queueName);
             
             for (var i = 0; i < _messagesToSend; i++)
             {

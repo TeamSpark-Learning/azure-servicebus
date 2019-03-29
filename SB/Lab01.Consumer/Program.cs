@@ -25,7 +25,7 @@ namespace Lab01.Consumer
 
             await Bootstrap.Lab01Async(_queueName);
             
-            _queue = new QueueClient(Configs.SbConnectionString, _queueName);
+            _queue = new QueueClient(Configs.SbFailoverConnectionString, _queueName);
             
             var messageHandlerOptions = new MessageHandlerOptions(Helpers.ExceptionReceivedHandler)
             {
@@ -48,8 +48,6 @@ namespace Lab01.Consumer
                               $"SequenceNumber: {message.SystemProperties.SequenceNumber}" +
                               $"Body: {Encoding.UTF8.GetString(message.Body)}");
 
-            //await Task.Delay(TimeSpan.FromSeconds(5));
-            
             await _queue.CompleteAsync(message.SystemProperties.LockToken);
         }
     }

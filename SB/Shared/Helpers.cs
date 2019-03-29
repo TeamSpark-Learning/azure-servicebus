@@ -10,7 +10,7 @@ namespace Shared
     {
         public static async Task EnsureQueueExistsAsync(QueueDescription queueDescription)
         {
-            var sbManagement = new ManagementClient(Configs.SbConnectionString);
+            var sbManagement = new ManagementClient(Configs.SbFailoverConnectionString);
             
             var queues = await sbManagement.GetQueuesAsync();
             if (!queues.Any(x => x.Path.Equals(queueDescription.Path)))
@@ -22,7 +22,7 @@ namespace Shared
         
         public static async Task EnsureTopicExistsAsync(TopicDescription topicDescription)
         {
-            var sbManagement = new ManagementClient(Configs.SbConnectionString);
+            var sbManagement = new ManagementClient(Configs.SbFailoverConnectionString);
             
             var topics = await sbManagement.GetTopicsAsync();
             if (!topics.Any(x => x.Path.Equals(topicDescription.Path)))
@@ -34,7 +34,7 @@ namespace Shared
         
         public static async Task EnsureSubscriptionExistsAsync(SubscriptionDescription subscriptionDescription)
         {
-            var sbManagement = new ManagementClient(Configs.SbConnectionString);
+            var sbManagement = new ManagementClient(Configs.SbFailoverConnectionString);
 
             var subscriptions = await sbManagement.GetSubscriptionsAsync(subscriptionDescription.TopicPath);
             if (!subscriptions.Any(x => x.SubscriptionName.Equals(subscriptionDescription.SubscriptionName)))
@@ -46,7 +46,7 @@ namespace Shared
         
         public static async Task EnsureSubscriptionRuleExistsAsync(string topicName, string subscriptionName, RuleDescription ruleDescription)
         {
-            var sbManagement = new ManagementClient(Configs.SbConnectionString);
+            var sbManagement = new ManagementClient(Configs.SbFailoverConnectionString);
 
             var rules = await sbManagement.GetRulesAsync(topicName, subscriptionName);
 
