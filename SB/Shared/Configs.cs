@@ -4,7 +4,10 @@ namespace Shared
 {
     public static class Configs
     {
-        public static string SbConnectionString => "";
+        public static string SbFailoverConnectionString => "";
+        
+        public static string SbPrimaryConnectionString => "";
+        public static string SbSecondaryConnectionString => "";
         
         public static int PID => Process.GetCurrentProcess().Id;
     }
